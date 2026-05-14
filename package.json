@@ -1,0 +1,71 @@
+{
+  "name": "tentacles",
+  "private": true,
+  "type": "module",
+  "imports": {
+    "#/*": "./src/*"
+  },
+  "scripts": {
+    "generate": "graphql-codegen --config codegen.ts",
+    "dev": "vite dev --port 3000",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "format": "biome format --fix",
+    "lint": "biome lint",
+    "check": "biome check",
+    "deploy": "pnpm run build && wrangler deploy"
+  },
+  "dependencies": {
+    "@cloudflare/vite-plugin": "1.26.0",
+    "@graphql-typed-document-node/core": "3.2.0",
+    "@heroui/react": "3.0.3",
+    "@heroui/styles": "3.0.3",
+    "@phosphor-icons/react": "2.1.10",
+    "@tailwindcss/vite": "4.1.18",
+    "@tanstack/react-devtools": "latest",
+    "@tanstack/react-form": "1.29.1",
+    "@tanstack/react-query": "5.100.9",
+    "@tanstack/react-query-devtools": "5.100.9",
+    "@tanstack/react-router": "latest",
+    "@tanstack/react-router-devtools": "latest",
+    "@tanstack/react-router-ssr-query": "latest",
+    "@tanstack/react-start": "latest",
+    "@tanstack/router-plugin": "1.132.0",
+    "graphql": "16.14.0",
+    "graphql-request": "7.4.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "recharts": "3.8.1",
+    "tailwindcss": "4.1.18",
+    "usehooks-ts": "3.1.1",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@0no-co/graphqlsp": "1.15.4",
+    "@biomejs/biome": "2.4.5",
+    "@fontsource/varela-round": "5.2.8",
+    "@graphql-codegen/cli": "7.0.0",
+    "@graphql-codegen/schema-ast": "6.0.0",
+    "@parcel/watcher": "2.5.6",
+    "@tailwindcss/typography": "0.5.16",
+    "@tanstack/devtools-vite": "latest",
+    "@testing-library/dom": "10.4.1",
+    "@testing-library/react": "16.3.0",
+    "@types/node": "22.10.2",
+    "@types/react": "19.2.0",
+    "@types/react-dom": "19.2.0",
+    "@vitejs/plugin-react": "6.0.1",
+    "jsdom": "28.1.0",
+    "typescript": "6.0.2",
+    "vite": "8.0.0",
+    "vitest": "4.1.5",
+    "wrangler": "4.70.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "lightningcss"
+    ]
+  }
+}

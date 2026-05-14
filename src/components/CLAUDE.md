@@ -1,0 +1,2 @@
+- Implement using HeroUI when appropriate components exist (AI docs: https://heroui.com/react/llms.txt)
+- For charts, use recharts
