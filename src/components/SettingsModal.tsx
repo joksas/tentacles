@@ -60,6 +60,7 @@ export function SettingsModal({
 									>
 										<Label>Octopus API key</Label>
 										<Input
+											autoFocus
 											placeholder={`${API_KEY_PREFIX}...`}
 											className="border border-border/60 font-mono"
 											value={field.state.value ?? ""}
