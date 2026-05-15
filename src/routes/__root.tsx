@@ -16,7 +16,7 @@ const OG_URL = "https://tentacles.dovydas.com";
 const OG_TITLE = "Tentacles";
 const OG_DESCRIPTION =
 	"Personal energy dashboard - track bills and simulate tariffs.";
-const OG_IMAGE = "/og.png";
+const OG_IMAGE = "/og.jpg";
 
 export const Route = createRootRouteWithContext<{
 	queryClient: QueryClient;
