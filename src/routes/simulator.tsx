@@ -1,33 +1,22 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Welcome } from "#/components/Welcome";
 import { LoadingScreen } from "#/components/LoadingScreen";
 import { TariffSimulator } from "#/components/TariffSimulator";
+import { Welcome } from "#/components/Welcome";
+import { useSettings } from "#/lib/auth";
+import { buildTariffCode, simulateTariff } from "#/lib/tariff";
+import { getLastCompleteMonths } from "#/lib/time";
 import { useDailyConsumption } from "#/services/octopus/graphql/consumption";
 import { useViewer } from "#/services/octopus/graphql/viewer";
 import { useProductDetail } from "#/services/octopus/rest/product-detail";
 import { useCurrentProducts } from "#/services/octopus/rest/products";
 import { useStandardUnitRates } from "#/services/octopus/rest/standard-unit-rates";
 import { useStandingCharges } from "#/services/octopus/rest/standing-charges";
-import { useSettings } from "#/lib/auth";
-import { buildTariffCode, simulateTariff } from "#/lib/tariff";
 
 export const Route = createFileRoute("/simulator")({
 	component: SimulatorPage,
 });
 
-/** Returns ISO strings for the start and end (exclusive) of the last N complete months. */
-function lastCompleteMonths(n: number): { startAt: string; endAt: string } {
-	const now = new Date();
-	const endAt = new Date(now.getFullYear(), now.getMonth(), 1).toISOString();
-	const startAt = new Date(
-		now.getFullYear(),
-		now.getMonth() - n,
-		1,
-	).toISOString();
-	return { startAt, endAt };
-}
-
-const PERIOD = lastCompleteMonths(6);
+const PERIOD = getLastCompleteMonths(6);
 
 function SimulatorPage() {
 	const apiKey = useSettings().apiKey;

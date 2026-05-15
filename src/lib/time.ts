@@ -22,3 +22,18 @@ export function formatDate(
 		year: showYear ? "numeric" : undefined,
 	}).format(dateObj);
 }
+
+/** Returns ISO strings for the start and end (exclusive) of the last N complete months. */
+export function getLastCompleteMonths(n: number): {
+	startAt: string;
+	endAt: string;
+} {
+	const now = new Date();
+	const endAt = new Date(now.getFullYear(), now.getMonth(), 1).toISOString();
+	const startAt = new Date(
+		now.getFullYear(),
+		now.getMonth() - n,
+		1,
+	).toISOString();
+	return { startAt, endAt };
+}
