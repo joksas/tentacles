@@ -17,3 +17,4 @@ todos.json
 src/graphql
 schema.graphql
 .claude/settings.local.json
+*.d.ts

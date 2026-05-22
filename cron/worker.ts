@@ -4,10 +4,6 @@ import { fetchFreshAuthToken } from "#/services/octopus/graphql/token";
 import { fetchActiveAccountNumber } from "#/services/octopus/graphql/viewer";
 import { COFFEE_SLUGS } from "./_constants";
 
-interface Env {
-	OCTOPUS_API_KEY: string;
-}
-
 export default {
 	async scheduled(_event: unknown, env: Env, _ctx: unknown): Promise<void> {
 		const token = await fetchFreshAuthToken(env.OCTOPUS_API_KEY);

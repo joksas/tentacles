@@ -15,7 +15,8 @@
     "lint": "biome lint",
     "check": "biome check",
     "deploy": "pnpm run build && wrangler deploy",
-    "deploy:cron": "wrangler deploy --config cron/wrangler.jsonc"
+    "check:cron-secrets": "wrangler secret list --config cron/wrangler.jsonc | grep -q OCTOPUS_API_KEY || (echo 'ERROR: OCTOPUS_API_KEY secret not set. Run: pnpm wrangler secret put OCTOPUS_API_KEY --config cron/wrangler.jsonc' && false)",
+    "deploy:cron": "pnpm check:cron-secrets && wrangler deploy --config cron/wrangler.jsonc"
   },
   "dependencies": {
     "@cloudflare/vite-plugin": "1.26.0",
