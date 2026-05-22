@@ -12,7 +12,10 @@ describe.skipIf(!API_KEY)("coffee cron", () => {
 		const accountNumber = await fetchActiveAccountNumber(token);
 		const resp = await fetchOffers(accountNumber, token);
 		const offers =
-			resp.octoplusOfferGroups?.edges.flatMap((e) => e?.node?.octoplusOffers ?? []).filter((offer)=>offer.slug && COFFEE_SLUGS.includes(offer.slug)) ?? [];
+			resp.octoplusOfferGroups?.edges
+				.flatMap((e) => e?.node?.octoplusOffers ?? [])
+				.filter((offer) => offer.slug && COFFEE_SLUGS.includes(offer.slug)) ??
+			[];
 
 		console.log("Offers:", JSON.stringify(offers, null, 2));
 		expect(offers.length).toBeGreaterThan(0);
