@@ -19,5 +19,5 @@ describe.skipIf(!API_KEY)("coffee cron", () => {
 		for (const offer of offers) {
 			expect(offer.slug).toBeTypeOf("string");
 		}
-	}, 15_000);
+	}, 30_000);
 });
