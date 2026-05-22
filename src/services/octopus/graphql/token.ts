@@ -14,6 +14,13 @@ const MUTATION = graphql(`
   }
 `);
 
+export async function fetchAuthTokenDirect(apiKey: string): Promise<string> {
+	const data = await request(OCTOPUS_GRAPHQL_ENDPOINT, MUTATION, { apiKey });
+	const token = data.obtainKrakenToken?.token;
+	if (!token) throw Error("NO_TOKEN");
+	return token;
+}
+
 export async function fetchAuthToken(client: QueryClient, apiKey: string) {
 	return client.fetchQuery({
 		queryKey: [OCTOPUS_QUERY_KEY, apiKey, "token"],

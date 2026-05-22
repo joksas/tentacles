@@ -24,6 +24,18 @@ const QUERY = graphql(`
 `);
 export type ViewerResp = ViewerQuery;
 
+export async function fetchActiveAccountNumber(token: string): Promise<string> {
+	const data = await request(
+		OCTOPUS_GRAPHQL_ENDPOINT,
+		QUERY,
+		{},
+		{ Authorization: token },
+	);
+	const account = data.viewer?.accounts?.find((a) => a?.status === "ACTIVE");
+	if (!account?.number) throw new Error("No active Octopus account");
+	return account.number;
+}
+
 export function useViewer() {
 	const client = useQueryClient();
 	const apiKey = useSettings().apiKey;
