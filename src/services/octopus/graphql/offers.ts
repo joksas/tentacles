@@ -1,6 +1,7 @@
 import request from "graphql-request";
 import { graphql } from "#/graphql";
 import type { CoffeeOffersQuery } from "#/graphql/graphql";
+import { USER_AGENT } from "../_constants";
 import { OCTOPUS_GRAPHQL_BACKEND_ENDPOINT } from "./_constants";
 
 const QUERY = graphql(`
@@ -27,6 +28,6 @@ export async function fetchOffers(accountNumber: string, token: string) {
 		OCTOPUS_GRAPHQL_BACKEND_ENDPOINT,
 		QUERY,
 		{ accountNumber },
-		{ Authorization: token },
+		{ Authorization: token, "User-Agent": USER_AGENT },
 	);
 }
