@@ -1,7 +1,7 @@
 import request from "graphql-request";
 import { graphql } from "#/graphql";
 import type { CoffeeOffersQuery } from "#/graphql/graphql";
-import { OCTOPUS_GRAPHQL_ENDPOINT } from "./_constants";
+import { OCTOPUS_GRAPHQL_BACKEND_ENDPOINT } from "./_constants";
 
 const QUERY = graphql(`
   query CoffeeOffers($accountNumber: String!) {
@@ -22,9 +22,9 @@ const QUERY = graphql(`
 `);
 export type CoffeeOffersResp = CoffeeOffersQuery;
 
-export async function fetchCoffeeOffers(accountNumber: string, token: string) {
+export async function fetchOffers(accountNumber: string, token: string) {
 	return request(
-		OCTOPUS_GRAPHQL_ENDPOINT,
+		OCTOPUS_GRAPHQL_BACKEND_ENDPOINT,
 		QUERY,
 		{ accountNumber },
 		{ Authorization: token },
