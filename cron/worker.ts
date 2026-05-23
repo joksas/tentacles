@@ -32,7 +32,7 @@ export default {
 				await claimOffer(accountNumber, token, offer.slug ?? "");
 				console.log(`Claimed ${offer.slug} - check Octopus app for QR code`);
 			} else {
-				console.error(
+				console.log(
 					`${offer?.slug}: ${offer?.claimAbility?.cannotClaimReason}`,
 				);
 			}
