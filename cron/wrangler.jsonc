@@ -5,8 +5,8 @@
 	"compatibility_date": "2025-09-02",
 	"compatibility_flags": ["nodejs_compat"],
 	"triggers": {
-		// Runs every 15 min from 04:30–08:00 UTC daily
-		"crons": ["30,45 4 * * *", "*/15 5-7 * * *", "0 8 * * *"]
+		// Runs every 5 min from 04:00–06:30 UTC daily
+		"crons": ["*/5 4-5 * * *", "0,5,10,15,20,25,30 6 * * *"]
 	},
 	"observability": {
 		"logs": {
