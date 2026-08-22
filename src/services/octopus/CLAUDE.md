@@ -1,3 +1,3 @@
-- @src/services/octopus/_constants.ts: constants shared by all queries
-- @src/services/octopus/graphql/: GraphQL queries (see @src/services/octopus/graphql/CLAUDE.md)
-- @src/services/octopus/rest/: REST queries (see @src/services/octopus/rest/CLAUDE.md)
+- src/services/octopus/_constants.ts: constants shared by all queries
+- src/services/octopus/graphql/: GraphQL queries (see src/services/octopus/graphql/CLAUDE.md)
+- src/services/octopus/rest/: REST queries (see src/services/octopus/rest/CLAUDE.md)
