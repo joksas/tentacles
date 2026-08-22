@@ -5,8 +5,10 @@
 	"compatibility_date": "2025-09-02",
 	"compatibility_flags": ["nodejs_compat"],
 	"triggers": {
-		// Runs every 5 min from 04:00–06:30 UTC daily
-		"crons": ["*/5 4-5 * * *", "0,5,10,15,20,25,30 6 * * *"]
+	// Scratchcard appears Monday UK time and is available all day.
+	// Run hourly every Monday (UTC). 23:00 Sun UTC = midnight Mon BST,
+	// so we catch the card from the very start of the UK day.
+	"crons": ["0 * * * 1", "0 23 * * 0"]
 	},
 	"observability": {
 		"logs": {
