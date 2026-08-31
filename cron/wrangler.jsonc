@@ -1,14 +1,15 @@
 {
 	"$schema": "../node_modules/wrangler/config-schema.json",
+	// Named before the offer became a scratchcard; kept so the deployed worker and its secret survive.
 	"name": "tentacles-coffee-cron",
 	"main": "worker.ts",
 	"compatibility_date": "2025-09-02",
 	"compatibility_flags": ["nodejs_compat"],
 	"triggers": {
-	// Scratchcard appears Monday UK time and is available all day.
-	// Run hourly every Monday (UTC). 23:00 Sun UTC = midnight Mon BST,
-	// so we catch the card from the very start of the UK day.
-	"crons": ["0 * * * 1", "0 23 * * 0"]
+		// The scratchcard session runs 23:00 Sun UTC to 23:00 Mon UTC (the whole UK Monday).
+		// Scratch at the start of the session, then retry through the day.
+		// Cloudflare's day-of-week field is MON-SUN, so names avoid the 0/7 ambiguity.
+		"crons": ["0 23 * * SUN", "0 */4 * * MON"]
 	},
 	"observability": {
 		"logs": {
